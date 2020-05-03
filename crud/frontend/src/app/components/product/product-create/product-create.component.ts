@@ -23,12 +23,12 @@ export class ProductCreateComponent implements OnInit {
   
   createProduct() : void{
     this.productService.create(this.product).subscribe(
-      data => {
+      () => {
       this.productService.showMessage('Produto cadastrado com sucesso.')
       this.router.navigate(['/products'])
     },
     error => {
-      this.productService.showMessage('Erro ao cadastrar o produto.')
+      this.productService.showMessage('Erro ao cadastrar o produto.',true)
       console.error(error);
     })
   }

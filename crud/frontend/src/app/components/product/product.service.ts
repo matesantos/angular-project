@@ -13,11 +13,12 @@ export class ProductService {
 
   constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
 
-  showMessage(msg: string) :void{
+  showMessage(msg: string, isError: boolean = false) :void{
     this.snackbar.open(msg, 'X',{
       duration: 3000,
       horizontalPosition: "right",
-      verticalPosition: "top"
+      verticalPosition: "top",
+      panelClass: isError ? ['msg-error'] : ['msg-success']
     })
   }
 
@@ -29,10 +30,19 @@ export class ProductService {
     return this.http.get<Product[]>(this.base_url)
   }
 
-  error<T>(error:T): void{
-    this.showMessage(`Não foi possível carregar os ${error} cadastrados`)
-    console.error(error)
+  readById(id: number): Observable<Product>{
+    return this.http.get<Product>(this.url(id));
   }
 
+  update(product: Product): Observable<Product>{
+    return this.http.put<Product>(this.url(product.id),product);
+  }
 
+   delete(id: number): Observable<Product>{
+    return this.http.delete<Product>(this.url(id))
+  }
+
+  private url(id: number): string{
+    return `${this.base_url}/${id}`
+  }
 }

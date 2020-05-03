@@ -10,3 +10,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .v-midlle{
     vertical-align: middle;
 }
+
+.formCrud {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonCrud {
+    margin: 20px 15px 0px 0px;
+}
+
+.msg-success{
+    background-color: #28a745;
+    color: #FFF;
+}
+
+.msg-error{
+    background-color: #e35e6b;
+    color: #FFF;
+}
