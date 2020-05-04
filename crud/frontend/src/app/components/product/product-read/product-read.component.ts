@@ -35,7 +35,7 @@ export class ProductReadComponent implements OnInit {
   }
 
   error(error:any): void{
-    this.service.showMessage('Não foi possível carregar os produtos cadastrados.')
+    this.service.showMessage('Não foi possível carregar os produtos cadastrados.', true)
     console.error(error)
   }
 
